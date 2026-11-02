@@ -38,8 +38,44 @@
   /* ---------- Hero ---------- */
   header{
     position:relative;overflow:hidden;
-    background:linear-gradient(150deg,#EAF5EC 0%,#E2EFF6 60%,#EDEAF6 100%);
-    padding:64px 0 56px;
+    background:linear-gradient(120deg,#EAF5EC,#E2EFF6,#EDEAF6,#FBF0DC,#EAF5EC);
+    background-size:240% 240%;
+    animation:heroShift 16s ease infinite alternate;
+    padding:64px 0 60px;
+  }
+  @keyframes heroShift{from{background-position:0% 40%}to{background-position:100% 60%}}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;position:relative}
+  .hl{background:linear-gradient(transparent 60%,#F9D976 60%);padding:0 2px;border-radius:2px}
+  .hero-points{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;position:relative}
+  .hero-points span{
+    background:rgba(255,255,255,.8);border:1px solid var(--line);
+    padding:6px 13px;border-radius:999px;font-size:13.5px;font-weight:600;color:#54655B;
+  }
+  .hero-visual{position:relative;animation:floaty 8s ease-in-out infinite alternate;padding:10px 6px}
+  .hv-card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:13px 16px}
+  .hv-main{display:flex;align-items:center;gap:10px}
+  .hv-dot{width:11px;height:11px;border-radius:50%;background:var(--green);flex:0 0 auto;animation:pulseDot 2.2s ease-in-out infinite}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(127,174,139,.45)}50%{box-shadow:0 0 0 6px rgba(127,174,139,0)}}
+  .hv-main b{font-size:16px;color:#2F4A3A}
+  .hv-main span{margin-left:auto;font-size:12px;font-weight:700;color:var(--green-deep);background:var(--green-tint);padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .hv-line{width:2px;height:20px;margin:5px auto;background:linear-gradient(var(--green),#A9CBDD);border-radius:2px}
+  .hv-row{display:flex;gap:8px}
+  .hv-chip{flex:1;text-align:center;padding:9px 4px;border-radius:10px;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:#fff}
+  .hv-chip.c1{background:var(--sky-tint);border-color:#A9CBDD;color:#33617A}
+  .hv-chip.c2{background:var(--pink-tint);border-color:#E3B7C0;color:#8A4453}
+  .hv-chip.c3{background:var(--butter-tint);border-color:#EBD88F;color:#7A6216}
+  .hv-team{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+  .hv-team span{font-size:12.5px;font-weight:700;padding:4px 11px;border-radius:999px;background:#fff;border:1.5px solid var(--line);color:#54655B}
+  .hv-team span.lead{background:var(--green-tint);border-color:var(--green);color:var(--green-deep)}
+  .hv-badge{
+    position:absolute;background:#fff;font-size:12.5px;font-weight:700;
+    padding:5px 12px;border-radius:999px;box-shadow:var(--shadow);z-index:2;
+  }
+  .hv-badge.b1{top:-8px;right:14px;border:1.5px solid var(--peach);color:var(--peach-deep);animation:floaty 7s ease-in-out infinite alternate}
+  .hv-badge.b2{bottom:-6px;left:0;border:1.5px solid var(--green);color:var(--green-deep);animation:floaty 9s ease-in-out infinite alternate-reverse}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-visual{max-width:460px}
   }
   .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none}
   .blob.b1{width:230px;height:230px;background:#F9D976;top:-70px;right:6%;animation:floaty 9s ease-in-out infinite alternate}
@@ -195,10 +231,39 @@
 <header>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   <div class="wrap">
-    <span class="badge fade-up">Cẩm nang cho người mới</span>
-    <h1 class="fade-up d1">Muse làm việc như thế nào?</h1>
-    <p class="lead fade-up d2">Xin chào, mình là <strong>Muse</strong> — trợ lý AI cá nhân. Để làm được nhiều việc cùng lúc mà không rối, mình vận hành như một công ty nhỏ gồm 3 lớp: một trung tâm điều phối, nhiều phòng ban chuyên trách, và trong mỗi phòng là một team được phân quyền rõ ràng.</p>
-    <p class="sign fade-up d3">Đọc xong trang này, bạn sẽ biết: việc nào nói ở đâu, ai phụ trách, và kết quả quay về bằng cách nào.</p>
+    <div class="hero-grid">
+      <div>
+        <span class="badge fade-up">Cẩm nang cho người mới</span>
+        <h1 class="fade-up d1">Muse <span class="hl">làm việc</span> như thế nào?</h1>
+        <p class="lead fade-up d2">Xin chào, mình là <strong>Muse</strong> — trợ lý AI cá nhân. Để làm được nhiều việc cùng lúc mà không rối, mình vận hành như một công ty nhỏ gồm 3 lớp: một trung tâm điều phối, nhiều phòng ban chuyên trách, và trong mỗi phòng là một team được phân quyền rõ ràng.</p>
+        <p class="sign fade-up d3">Đọc xong trang này, bạn sẽ biết: việc nào nói ở đâu, ai phụ trách, và kết quả quay về bằng cách nào.</p>
+        <div class="hero-points fade-up d3">
+          <span>🧠 1 trí nhớ chung</span>
+          <span>🗂️ Mỗi việc 1 phòng riêng</span>
+          <span>🎯 Mỗi team 1 đầu mối</span>
+          <span>✅ Duyệt 1 lần cho cả gói</span>
+        </div>
+      </div>
+      <div class="hero-visual fade-up d2">
+        <div class="hv-badge b1">✍️ Nháp sẵn, chờ duyệt</div>
+        <div class="hv-card">
+          <div class="hv-main"><span class="hv-dot"></span><b>Main Chat</b><span>Trí nhớ chung</span></div>
+          <div class="hv-line"></div>
+          <div class="hv-row">
+            <div class="hv-chip c1">Side Chat A<br>Nội dung</div>
+            <div class="hv-chip c2">Side Chat B<br>Khách hàng</div>
+            <div class="hv-chip c3">Side Chat C<br>Dự án</div>
+          </div>
+          <div class="hv-line"></div>
+          <div class="hv-team">
+            <span class="lead">@Lead — đầu mối</span>
+            <span>Vai chuyên môn</span>
+            <span>@QA kiểm tra</span>
+          </div>
+        </div>
+        <div class="hv-badge b2">🎬 Clip mới đã đạt chuẩn</div>
+      </div>
+    </div>
   </div>
 </header>
 
